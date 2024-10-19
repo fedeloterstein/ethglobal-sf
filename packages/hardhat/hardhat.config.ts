@@ -62,12 +62,16 @@ const config: HardhatUserConfig = {
       url: "https://sepolia.base.org",
       accounts: [deployerPrivateKey],
     },
-    flow: {
+    flowTestnet: {
       url: "https://testnet.evm.nodes.onflow.org",
       accounts: [deployerPrivateKey],
     },
     airDao: {
-      url: "https://network.ambrosus-test.io ",
+      url: "https://network.ambrosus-test.io",
+      accounts: [deployerPrivateKey],
+    },
+    rootstockTestnet: {
+      url: "https://public-node.testnet.rsk.co",
       accounts: [deployerPrivateKey],
     },
   },
