@@ -37,6 +37,7 @@ const scaffoldConfig = {
     airdao,
     chains.zircuitTestnet,
     chains.rootstockTestnet,
+    chains.polygonZkEvmCardona,
   ],
 
   // The interval at which your front-end polls the RPC servers for new data
