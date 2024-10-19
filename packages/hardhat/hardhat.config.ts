@@ -74,6 +74,10 @@ const config: HardhatUserConfig = {
       url: "https://public-node.testnet.rsk.co",
       accounts: [deployerPrivateKey],
     },
+    zircuitTestnet: {
+      url: "https://zircuit1-testnet.p2pify.com",
+      accounts: [deployerPrivateKey],
+    },
   },
   // configuration for harhdat-verify plugin
   etherscan: {
