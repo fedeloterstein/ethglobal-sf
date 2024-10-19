@@ -78,6 +78,10 @@ const config: HardhatUserConfig = {
       url: "https://zircuit1-testnet.p2pify.com",
       accounts: [deployerPrivateKey],
     },
+    morphHoleskyTestnet: {
+      url: "https://rpc-quicknode-holesky.morphl2.io",
+      accounts: [deployerPrivateKey],
+    },
   },
   // configuration for harhdat-verify plugin
   etherscan: {
