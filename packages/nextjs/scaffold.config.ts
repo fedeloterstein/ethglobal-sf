@@ -1,4 +1,24 @@
+import { defineChain } from "viem";
 import * as chains from "viem/chains";
+
+export const airdao = defineChain({
+  id: 22040,
+  name: "airdao testnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Ether",
+    symbol: "AMB",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://network.ambrosus-test.io"],
+      webSocket: ["https://network.ambrosus-test.io"],
+    },
+  },
+  blockExplorers: {
+    default: { name: "Explorer", url: "https://network.ambrosus-test.io" },
+  },
+});
 
 export type ScaffoldConfig = {
   targetNetworks: readonly chains.Chain[];
@@ -10,7 +30,7 @@ export type ScaffoldConfig = {
 
 const scaffoldConfig = {
   // The networks on which your DApp is live
-  targetNetworks: [chains.sepolia, chains.baseSepolia, chains.flowTestnet, chains.rootstockTestnet],
+  targetNetworks: [chains.sepolia, chains.baseSepolia, chains.flowTestnet, airdao],
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect if you only target the local network (default is 4000)
