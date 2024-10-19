@@ -33,7 +33,7 @@ const config: HardhatUserConfig = {
       },
     ],
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "sepolia",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -49,76 +49,25 @@ const config: HardhatUserConfig = {
         enabled: process.env.MAINNET_FORKING_ENABLED === "true",
       },
     },
-    mainnet: {
-      url: `https://cloudflare-eth.com`,
-      accounts: [deployerPrivateKey],
-    },
     sepolia: {
       url: `https://rpc2.sepolia.org`,
       accounts: [deployerPrivateKey],
     },
-    arbitrum: {
-      url: `https://arb1.arbitrum.io/rpc`,
+    polygonCardona: {
+      url: `https://rpc.cardona.zkevm-rpc.com`,
       accounts: [deployerPrivateKey],
     },
-    arbitrumSepolia: {
-      url: `https://sepolia-rollup.arbitrum.io/rpc`,
-      accounts: [deployerPrivateKey],
-    },
-    optimism: {
-      url: `https://mainnet.optimism.io`,
-      accounts: [deployerPrivateKey],
-    },
-    optimismSepolia: {
-      url: `https://sepolia.optimism.io`,
-      accounts: [deployerPrivateKey],
-    },
-    polygon: {
-      url: `https://polygon-rpc.com`,
-      accounts: [deployerPrivateKey],
-    },
-    polygonMumbai: {
-      url: `https://rpc.ankr.com/polygon_mumbai`,
-      accounts: [deployerPrivateKey],
-    },
-    polygonZkEvm: {
-      url: `https://zkevm-rpc.com`,
-      accounts: [deployerPrivateKey],
-    },
-    polygonZkEvmTestnet: {
-      url: `https://rpc.public.zkevm-test.net`,
-      accounts: [deployerPrivateKey],
-    },
-    gnosis: {
-      url: "https://rpc.gnosischain.com",
-      accounts: [deployerPrivateKey],
-    },
-    chiado: {
-      url: "https://rpc.chiadochain.net",
-      accounts: [deployerPrivateKey],
-    },
-    base: {
-      url: "https://mainnet.base.org",
-      accounts: [deployerPrivateKey],
-    },
+
     baseSepolia: {
       url: "https://sepolia.base.org",
       accounts: [deployerPrivateKey],
     },
-    scrollSepolia: {
-      url: "https://sepolia-rpc.scroll.io",
+    flow: {
+      url: "https://testnet.evm.nodes.onflow.org",
       accounts: [deployerPrivateKey],
     },
-    scroll: {
-      url: "https://rpc.scroll.io",
-      accounts: [deployerPrivateKey],
-    },
-    pgn: {
-      url: "https://rpc.publicgoods.network",
-      accounts: [deployerPrivateKey],
-    },
-    pgnTestnet: {
-      url: "https://sepolia.publicgoods.network",
+    airDao: {
+      url: "https://network.ambrosus-test.io ",
       accounts: [deployerPrivateKey],
     },
   },
