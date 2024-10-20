@@ -9,6 +9,33 @@ import Retirement from "./Retirement.json";
 import USDCMock from "./USDCMock.json";
 import { createPublicClient, http } from "viem";
 import { baseSepolia } from "viem/chains";
+import { validateFramesPost } from "@xmtp/frames-validator";
+
+const addMetaTags = (client: string, version?: string) => {
+  // Follow the OpenFrames meta tags spec
+  return {
+    unstable_metaTags: [
+      { property: `of:accepts`, content: version || "vNext" },
+      { property: `of:accepts:${client}`, content: version || "vNext" },
+    ],
+  };
+};
+
+const xmtpSupport = async (c: any, next: any) => {
+  // Check if the request is a POST and relevant for XMTP processing
+  if (c.req.method === "POST") {
+    const requestBody = (await c.req.json().catch(() => {})) || {};
+    if (requestBody?.clientProtocol?.includes("xmtp")) {
+      c.set("client", "xmtp");
+      const { verifiedWalletAddress } = await validateFramesPost(requestBody);
+      c.set("verifiedWalletAddress", verifiedWalletAddress);
+    } else {
+      // Add farcaster check
+      c.set("client", "farcaster");
+    }
+  }
+  await next();
+};
 
 const app = new Frog({
   assetsPath: "/",
@@ -16,10 +43,10 @@ const app = new Frog({
   // Supply a Hub to enable frame verification.
   // hub: neynar({ apiKey: 'NEYNAR_FROG_FM' })
   title: "Frog Frame",
+  ...addMetaTags("xmtp"),
 });
 
-// Uncomment to use Edge Runtime
-// export const runtime = 'edge'
+app.use(xmtpSupport);
 
 const client = createPublicClient({
   chain: baseSepolia,
