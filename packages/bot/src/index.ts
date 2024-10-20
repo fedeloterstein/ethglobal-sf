@@ -18,7 +18,7 @@ run(async (context: HandlerContext) => {
 
 Need to withdraw? Use /withdraw to manage your funds.
 
-🌐 Visit our app: secure-retire.vercel.app`);
+🌐 Visit  our app: secure-retire.vercel.app`);
       return;
     } else if (text.startsWith("/transactions")) {
       await context.send(`📊 Here is your recent transaction history:
